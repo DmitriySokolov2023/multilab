@@ -44,21 +44,21 @@ buttons = [
 {'label': '=', 'pos': (190, 410),}, 
 {'label': '+', 'pos': (280, 410),},
 {'label': 'C', 'pos': (10, 410),}, 
-{'label': 'del', 'pos': (10, 480)},
 ]
 
 def main():
     input_text = ""
     result = ""
-    screen.fill((200,200,200))
+
     # Отрисовка кнопок
     for button in buttons:
         x, y = button['pos']
-        pygame.draw.rect(screen, WHITE, (x, y, BUTTON_WIDTH, BUTTON_HEIGHT))
+        pygame.draw.rect(screen, BLACK, (x, y, BUTTON_WIDTH, BUTTON_HEIGHT))
         draw_text(button['label'], BLACK, x + 30, y + 10)
 
+
     while True:
-        
+        screen.fill(WHITE)
 
         # Обработка событий
         for event in pygame.event.get():
@@ -80,22 +80,17 @@ def main():
                                 result = str(eval(input_text))
                             except Exception:
                                 result = "Error"
-                        elif label == "del":
-                            input_text = input_text[:-1]
                         else:
                             input_text += label
 
-        # Отображение экрана
-        # Поле ввода
         pygame.draw.rect(screen, LIGHT_GRAY, (10, 50, WIDTH - 20, 100))
         draw_text(input_text, BLACK, 20, 70)
 
         # Поле результата
-        pygame.draw.rect(screen, (230,230,230), (10, 150, WIDTH - 20, 40))
+        pygame.draw.rect(screen, GRAY, (10, 150, WIDTH - 20, 40))
         draw_text(result, BLACK, 20, 155)
-
-        
-
         pygame.display.flip()
         
+
+
 main()
