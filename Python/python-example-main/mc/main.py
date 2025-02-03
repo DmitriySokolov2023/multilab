@@ -37,7 +37,6 @@ FONT = pygame.font.Font(None, 48)
 def draw_text(text, color, x, y):
     text_surface = FONT.render(text, True, color)
     screen.blit(text_surface, (x, y))
-
 SCORE = 0
 
 while True:
